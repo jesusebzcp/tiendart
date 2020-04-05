@@ -1,13 +1,53 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.contentPages {
+  margin: 5rem 1rem;
+}
+.logo {
+  text-align: center !important;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* btn colors */
+.btn-ttc,
+.btn-ttc:hover,
+.btn-ttc:active {
+  color: white;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f55e4d;
+}
+
+/* Aplicar gradientes de colores */
+/* Nota: no se muestran aquí todos los gradientes que tendrás que
+   definir para los diferentes navegadores. */
+.btn-ttc {
+  background-repeat: repeat-x;
+  background-image: linear-gradient(top, #009ed2 0%, #007da7 100%);
+}
+.especial {
+  color: #f55e4d;
+  font-weight: 500;
+}
+.especial :hover {
+  color: #f55e4d;
+  font-weight: 700;
+}
+.btn-login:hover {
+  background-color: #db5647;
+}
+.btn-btn {
+  margin-left: 75%;
+}
+nav {
+  -webkit-box-shadow: -2px -3px 8px 0px rgba(71, 70, 71, 1);
+  -moz-box-shadow: -2px -3px 8px 0px rgba(71, 70, 71, 1);
+  box-shadow: -2px -3px 8px 0px rgba(71, 70, 71, 1);
+}
+.soyrappi {
+  text-align: center;
+}
+.loginNav {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* estilso para pc */
+@media only screen and (min-width: 768px) {
 }
