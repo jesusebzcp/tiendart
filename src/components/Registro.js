@@ -95,7 +95,7 @@ const Registro = () => {
           </div>
         )}
         <div className="form-group col-md-6">
-          <label htmlFor="telefono">telefono</label>
+          <label htmlFor="telefono">Telefono</label>
           <input
             type="tel"
             className="form-control"
@@ -155,7 +155,7 @@ const Registro = () => {
         <div className="form-check">
           <input className="form-check-input" type="checkbox" id="gridCheck" />
           <label className="form-check-label" htmlFor="gridCheck">
-            acepto terminos
+            Acepto terminos y condiciones
           </label>
         </div>
       </div>

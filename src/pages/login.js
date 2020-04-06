@@ -1,33 +1,33 @@
 import React, { useState } from 'react';
 import logo from '../components/rappilogo.png';
 import 'firebase/auth';
-import { useFirebaseApp, useUser } from 'reactfire';
+import { useFirebaseApp } from 'reactfire';
 //hook de validar
 import useValidation from '../hooks/useValidation';
 
 import validarIniciarSesion from '../validation/validarIniciarSesion';
 import { useHistory } from 'react-router-dom';
+import Lottie from 'react-lottie';
+import animationData from './lavarmanos.json';
 
-const STATE_INCIAL = {
-  nombre: '',
-  email: '',
-  password: '',
-  idRt: '',
-  telefono: '',
-};
 const Login = () => {
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: animationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice',
+    },
+  };
   let history = useHistory();
 
   const [error, setError] = useState('');
 
-  const user = useUser();
   const firebase = useFirebaseApp();
   const STATE_INCIAL = {
     nombre: '',
     email: '',
     password: '',
-    idRt: '',
-    telefono: '',
   };
   const {
     valores,
@@ -38,7 +38,7 @@ const Login = () => {
     handleBlur,
   } = useValidation(STATE_INCIAL, validarIniciarSesion, iniciarSesion);
 
-  const { nombre, email, telefono, idRt, password } = valores;
+  const { nombre, email, password } = valores;
   async function iniciarSesion() {
     try {
       const nuevoUsuario = await firebase
@@ -55,61 +55,73 @@ const Login = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
-      <div className="soyrappi my-2">
-        <img width="80px" src={logo} alt="soyrappi" />
+    <div className="rg">
+      <div className="rg1">
+        <div className="lottie1 mt-2 text-center">
+          <Lottie options={defaultOptions} height={200} width={200} />
+          <h3>Cuidate!</h3>
+          <p>Recuerda lavarte las manos cuando llegues a tu casa</p>
+        </div>
       </div>
+      <form onSubmit={handleSubmit} noValidate className="rg2  ">
+        <div className="soyrappi my-2">
+          <img width="80px" src={logo} alt="soyrappi" />
+        </div>
+        <div className="rg3">
+          {errores.email && (
+            <div className="alert alert-danger" role="alert">
+              {errores.email}
+            </div>
+          )}
 
-      <div className="form-row">
-        <div className="form-group col-md-6">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
-        </div>
-        {errores.password && (
-          <div className="alert alert-danger" role="alert">
-            {errores.password}
+          <div className="form-group col">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
           </div>
-        )}
-        <div className="form-group col-md-6">
-          <label htmlFor="inputPassword4">Password</label>
-          <input
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-            onChange={handleChange}
-            name="password"
-            value={password}
-            onBlur={handleBlur}
-          />
-        </div>
-        {error && (
-          <div className="alert alert-danger" role="alert">
-            {error}
+          {errores.password && (
+            <div className="alert alert-danger" role="alert">
+              {errores.password}
+            </div>
+          )}
+
+          <div className="form-group col">
+            <label htmlFor="inputPassword4">Password</label>
+            <input
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Password"
+              onChange={handleChange}
+              name="password"
+              value={password}
+              onBlur={handleBlur}
+            />
+
+            <button
+              type="submit"
+              className=" mt-4 btn btn-block btn-ttc btn-login"
+            >
+              Iniciar sesion
+            </button>
           </div>
-        )}
-      </div>
-      <div className="form-group">
-        <div className="form-check">
-          <input className="form-check-input" type="checkbox" id="gridCheck" />
-          <label className="form-check-label" htmlFor="gridCheck">
-            acepto terminos
-          </label>
+
+          {error && (
+            <div className="alert alert-danger" role="alert">
+              {error}
+            </div>
+          )}
         </div>
-      </div>
-      <button type="submit" className="btn btn-block btn-ttc btn-login">
-        Iniciar sesion
-      </button>
-    </form>
+      </form>
+    </div>
   );
 };
 

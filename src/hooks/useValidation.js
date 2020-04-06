@@ -39,6 +39,7 @@ const useValidation = (stateIncial, validar, fn) => {
     valores,
     errores,
     registrarUser,
+
     handleChange,
     handleSubmit,
     handleBlur,
